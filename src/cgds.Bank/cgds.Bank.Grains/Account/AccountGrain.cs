@@ -26,7 +26,7 @@ namespace cgds.Bank.Grains.Account
         public Task Deposit(decimal amount)
         {
             _account.State.Balance += amount;
-            var operation = new AccountOperation
+            var operation = new OperationHistoryEntry
             {
                 Date = _time.Now,
                 Amount = amount,
@@ -41,7 +41,7 @@ namespace cgds.Bank.Grains.Account
             return Task.FromResult(_account.State.Balance);
         }
 
-        public Task<List<AccountOperation>> GetHistory(DateTime startDate, DateTime endDate)
+        public Task<List<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate)
         {
             var filteredHistory = _account.State
                 .History
@@ -53,7 +53,7 @@ namespace cgds.Bank.Grains.Account
         public Task Withdraw(decimal amount)
         {
             _account.State.Balance -= amount;
-            var operation = new AccountOperation
+            var operation = new OperationHistoryEntry
             {
                 Date = _time.Now,
                 Amount = -amount,

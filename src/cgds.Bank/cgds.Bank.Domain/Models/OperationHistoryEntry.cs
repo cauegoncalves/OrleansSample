@@ -4,7 +4,7 @@ using System.Text;
 
 namespace cgds.Bank.Domain.Models
 {
-    public class AccountOperation
+    public class OperationHistoryEntry
     {
 
         public DateTime Date { get; set; }
