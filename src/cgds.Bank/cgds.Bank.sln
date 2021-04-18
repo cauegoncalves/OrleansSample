@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.API", "cgds.Bank.API\cgds.Bank.API.csproj", "{278DD331-6BD1-4100-B5E0-9788F401D23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cgds.Bank.API", "cgds.Bank.API\cgds.Bank.API.csproj", "{278DD331-6BD1-4100-B5E0-9788F401D23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.Domain", "cgds.Bank.Domain\cgds.Bank.Domain.csproj", "{895E32B9-786A-48DF-89E2-F539EA1E7D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cgds.Bank.Domain", "cgds.Bank.Domain\cgds.Bank.Domain.csproj", "{895E32B9-786A-48DF-89E2-F539EA1E7D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.GrainInterfaces", "cgds.Bank.GrainInterfaces\cgds.Bank.GrainInterfaces.csproj", "{FEE0DC85-6B68-421C-87EF-307E699F23CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cgds.Bank.GrainInterfaces", "cgds.Bank.GrainInterfaces\cgds.Bank.GrainInterfaces.csproj", "{FEE0DC85-6B68-421C-87EF-307E699F23CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.Grains", "cgds.Bank.Grains\cgds.Bank.Grains.csproj", "{55F54CD8-389C-4831-BDC1-AC3DBE2C1396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cgds.Bank.Grains", "cgds.Bank.Grains\cgds.Bank.Grains.csproj", "{55F54CD8-389C-4831-BDC1-AC3DBE2C1396}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.Application", "cgds.Bank.Application\cgds.Bank.Application.csproj", "{757F9BDC-65A9-4FB1-8E71-A45FD5AD6C1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cgds.Bank.Services", "cgds.Bank.Services\cgds.Bank.Services.csproj", "{D99C3628-7F4C-490B-B852-7BAF3D3179F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{757F9BDC-65A9-4FB1-8E71-A45FD5AD6C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757F9BDC-65A9-4FB1-8E71-A45FD5AD6C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757F9BDC-65A9-4FB1-8E71-A45FD5AD6C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D99C3628-7F4C-490B-B852-7BAF3D3179F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D99C3628-7F4C-490B-B852-7BAF3D3179F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D99C3628-7F4C-490B-B852-7BAF3D3179F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D99C3628-7F4C-490B-B852-7BAF3D3179F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
