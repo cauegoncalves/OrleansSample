@@ -4,12 +4,12 @@ using System.Text;
 
 namespace cgds.Bank.Domain.Dto
 {
-    public class AccountOperationDto
+    public class AccountOperationRequestDto
     {
 
-        public int AgencyNumber { get; set; }
-        public string AccountNumber { get; set; }
         public decimal OperationAmount { get; set; }
+
+        public string[] Tags { get; set; }
 
     }
 }

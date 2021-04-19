@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace cgds.Bank.GrainInterfaces.Account
 {
-    public interface IAccountGrain : IGrainWithIntegerCompoundKey
+    public interface IAccountGrain : IGrainWithIntegerKey
     {
 
         Task Withdraw(decimal amount);

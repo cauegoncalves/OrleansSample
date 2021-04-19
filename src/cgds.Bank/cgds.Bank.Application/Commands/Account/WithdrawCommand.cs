@@ -11,9 +11,9 @@ namespace cgds.Bank.Application.Commands.Account
 {
     public class WithdrawCommand : IRequest
     {
-        public int AgencyNumber { get; set; }
-        public string AccountNumber { get; set; }
+        public int AccountNumber { get; set; }
         public decimal Amount { get; set; }
+        public string[] Tags { get; set; }
     }
 
     public class WithdrawCommandHandler : IRequestHandler<WithdrawCommand>
@@ -28,7 +28,7 @@ namespace cgds.Bank.Application.Commands.Account
 
         public async Task<Unit> Handle(WithdrawCommand request, CancellationToken cancellationToken)
         {
-            var accountGrain = _grainFactory.GetGrain<IAccountGrain>(request.AgencyNumber, request.AccountNumber);
+            var accountGrain = _grainFactory.GetGrain<IAccountGrain>(request.AccountNumber);
             await accountGrain.Withdraw(request.Amount);
             return Unit.Value;
         }
