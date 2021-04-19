@@ -17,7 +17,7 @@ namespace cgds.Bank.Grains.Account
         private readonly IPersistentState<AccountState> _account;
         private readonly ITime _time;
 
-        public AccountGrain(IPersistentState<AccountState> account, ITime time)
+        public AccountGrain([PersistentState("Account", "AccountStorage")]IPersistentState<AccountState> account, ITime time)
         {
             _account = account;
             _time = time;
