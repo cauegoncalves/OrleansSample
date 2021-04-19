@@ -1,3 +1,6 @@
+using cgds.Bank.Application.Extensions;
+using cgds.Bank.Services.Time;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,8 +29,11 @@ namespace cgds.Bank.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ITime, UTCTimeService>();
 
             services.AddControllers();
+            services.AddBankApplication();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "cgds.Bank.API", Version = "v1" });

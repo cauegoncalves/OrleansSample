@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Orleans.OrleansRuntime" Version="3.4.2" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="3.4.2" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
@@ -15,6 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\cgds.Bank.Application\cgds.Bank.Application.csproj" />
     <ProjectReference Include="..\cgds.Bank.Domain\cgds.Bank.Domain.csproj" />
+    <ProjectReference Include="..\cgds.Bank.GrainInterfaces\cgds.Bank.GrainInterfaces.csproj" />
+    <ProjectReference Include="..\cgds.Bank.Grains\cgds.Bank.Grains.csproj" />
   </ItemGroup>
 
 </Project>

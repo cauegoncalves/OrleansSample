@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Orleans;
+using Orleans.Runtime;
+using Orleans.Hosting;
 
 namespace cgds.Bank.API
 {
@@ -21,6 +24,13 @@ namespace cgds.Bank.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .UseOrleans((silo) =>
+                {
+                    silo.UseLocalhostClustering();
+                    silo.ConfigureApplicationParts(parts => parts.AddFromApplicationBaseDirectory());
+                    silo.AddMemoryGrainStorage("AccountStorage");
+                    silo.ConfigureLogging(logging => logging.AddConsole());
                 });
     }
 }
