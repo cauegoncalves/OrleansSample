@@ -4,9 +4,9 @@ using System.Text;
 
 namespace cgds.Bank.Domain.Exceptions
 {
-    public class InvalidValueException : Exception
+    public class InvalidValueException : BankException
     {
-        public InvalidValueException(string valueName) : base($"Invalid value for the field '{valueName}'}")
+        public InvalidValueException(string valueName) : base($"Invalid value for the field '{valueName}'")
         {
         }
     }

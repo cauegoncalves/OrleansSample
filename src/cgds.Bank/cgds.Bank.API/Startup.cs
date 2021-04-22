@@ -1,3 +1,4 @@
+using cgds.Bank.API.Filters;
 using cgds.Bank.Application.Extensions;
 using cgds.Bank.Services.Time;
 using MediatR;
@@ -31,7 +32,7 @@ namespace cgds.Bank.API
         {
             services.AddSingleton<ITime, UTCTimeService>();
 
-            services.AddControllers();
+            services.AddControllers(options => options.Filters.Add(new ExceptionFilter()));
             services.AddBankApplication();
 
             services.AddSwaggerGen(c =>
