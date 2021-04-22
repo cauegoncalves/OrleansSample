@@ -1,12 +1,8 @@
-﻿using cgds.Bank.Application.Commands.Account;
+﻿using cgds.Bank.API.Models;
+using cgds.Bank.Application.Commands.Account;
 using cgds.Bank.Application.Queries.Account;
-using cgds.Bank.Domain.Dto;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace cgds.Bank.API.Controllers
@@ -25,7 +21,7 @@ namespace cgds.Bank.API.Controllers
 
 
         [HttpPost("{accountNumber}/deposit")]
-        public async Task<IActionResult> Deposit([FromRoute]int accountNumber, [FromBody]AccountOperationRequestDto request)
+        public async Task<IActionResult> Deposit([FromRoute]int accountNumber, [FromBody]AccountOperationRequest request)
         {
             var depositCommand = new DepositCommand
             {
@@ -38,7 +34,7 @@ namespace cgds.Bank.API.Controllers
         }
 
         [HttpPost("{accountNumber}/withdraw")]
-        public async Task<IActionResult> Withdraw([FromRoute]int accountNumber, [FromBody]AccountOperationRequestDto request)
+        public async Task<IActionResult> Withdraw([FromRoute]int accountNumber, [FromBody]AccountOperationRequest request)
         {
             var withdrawCommand = new WithdrawCommand
             {
@@ -61,10 +57,17 @@ namespace cgds.Bank.API.Controllers
             return Ok(balance);
         }
 
-        [HttpGet("{accountNumber}")]
-        public async Task<IActionResult> GetHistory([FromRoute]int accountNumber)
+        [HttpPost("{accountNumber}/history")]
+        public async Task<IActionResult> GetHistory([FromRoute]int accountNumber, [FromBody]HistoryRequest request)
         {
-            return Ok();
+            var getHistoryQuery = new GetHistoryQuery
+            {
+                AccountNumber = accountNumber,
+                StartDate = request.StartDate,
+                EndDate = request.EndDate
+            };
+            var history = await _mediator.Send(getHistoryQuery).ConfigureAwait(false);
+            return Ok(history);
         }
 
     }

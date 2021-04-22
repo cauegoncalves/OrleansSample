@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace cgds.Bank.Domain.Dto
+namespace cgds.Bank.API.Models
 {
-    public class AccountOperationRequestDto
+    public class AccountOperationRequest
     {
 
         public decimal OperationAmount { get; set; }
