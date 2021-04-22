@@ -1,4 +1,5 @@
-﻿using cgds.Bank.Domain.Models;
+﻿using cgds.Bank.Domain.Exceptions;
+using cgds.Bank.Domain.Models;
 using cgds.Bank.GrainInterfaces.Account;
 using cgds.Bank.Services.Time;
 using Orleans;
@@ -25,6 +26,9 @@ namespace cgds.Bank.Grains.Account
 
         public Task Deposit(Operation operation)
         {
+            if (operation.Amount <= 0)
+                throw new InvalidValueException(nameof(operation.Amount));
+
             _account.State.Balance += operation.Amount;
             var operationHistory = new OperationHistoryEntry
             {
@@ -53,6 +57,12 @@ namespace cgds.Bank.Grains.Account
 
         public Task Withdraw(Operation operation)
         {
+            if (operation.Amount <= 0)
+                throw new InvalidValueException(nameof(operation.Amount));
+
+            if (_account.State.Balance < operation.Amount)
+                throw new InsufficientBalanceException();
+
             _account.State.Balance -= operation.Amount;
             var operationHistory = new OperationHistoryEntry
             {
