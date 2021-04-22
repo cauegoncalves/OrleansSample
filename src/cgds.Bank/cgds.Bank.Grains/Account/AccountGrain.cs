@@ -23,16 +23,17 @@ namespace cgds.Bank.Grains.Account
             _time = time;
         }
 
-        public Task Deposit(decimal amount)
+        public Task Deposit(Operation operation)
         {
-            _account.State.Balance += amount;
-            var operation = new OperationHistoryEntry
+            _account.State.Balance += operation.Amount;
+            var operationHistory = new OperationHistoryEntry
             {
                 Date = _time.Now,
-                Amount = amount,
-                Description = "Deposit"
+                Amount = operation.Amount,
+                Description = "Deposit",
+                Tags = operation.Tags
             };
-            _account.State.History.Add(operation);
+            _account.State.History.Add(operationHistory);
             return _account.WriteStateAsync();
         }
 
@@ -50,16 +51,17 @@ namespace cgds.Bank.Grains.Account
             return Task.FromResult(filteredHistory);
         }
 
-        public Task Withdraw(decimal amount)
+        public Task Withdraw(Operation operation)
         {
-            _account.State.Balance -= amount;
-            var operation = new OperationHistoryEntry
+            _account.State.Balance -= operation.Amount;
+            var operationHistory = new OperationHistoryEntry
             {
                 Date = _time.Now,
-                Amount = -amount,
-                Description = "Withdraw"
+                Amount = -(operation.Amount),
+                Description = "Withdraw",
+                Tags = operation.Tags
             };
-            _account.State.History.Add(operation);
+            _account.State.History.Add(operationHistory);
             return _account.WriteStateAsync();
         }
     }

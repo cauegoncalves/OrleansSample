@@ -1,4 +1,5 @@
-﻿using cgds.Bank.GrainInterfaces.Account;
+﻿using cgds.Bank.Domain.Models;
+using cgds.Bank.GrainInterfaces.Account;
 using MediatR;
 using Orleans;
 using System;
@@ -29,7 +30,12 @@ namespace cgds.Bank.Application.Commands.Account
         public async Task<Unit> Handle(DepositCommand request, CancellationToken cancellationToken)
         {
             var accountGrain = _grainFactory.GetGrain<IAccountGrain>(request.AccountNumber);
-            await accountGrain.Deposit(request.Amount);
+            var depositOperation = new Operation
+            {
+                Amount = request.Amount,
+                Tags = request.Tags
+            };
+            await accountGrain.Deposit(depositOperation);
             return Unit.Value;
         }
     }

@@ -10,8 +10,8 @@ namespace cgds.Bank.GrainInterfaces.Account
     public interface IAccountGrain : IGrainWithIntegerKey
     {
 
-        Task Withdraw(decimal amount);
-        Task Deposit(decimal amount);
+        Task Withdraw(Operation operation);
+        Task Deposit(Operation operation);
         Task<decimal> GetBalance();
         Task<List<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate);
 
