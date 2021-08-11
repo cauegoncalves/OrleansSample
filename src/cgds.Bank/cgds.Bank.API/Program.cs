@@ -31,6 +31,7 @@ namespace cgds.Bank.API
                     silo.ConfigureApplicationParts(parts => parts.AddFromApplicationBaseDirectory());
                     silo.AddMemoryGrainStorage("AccountStorage");
                     silo.ConfigureLogging(logging => logging.AddConsole());
+                    silo.UseDashboard();
                 });
     }
 }
