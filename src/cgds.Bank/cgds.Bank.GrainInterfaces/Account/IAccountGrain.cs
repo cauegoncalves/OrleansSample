@@ -13,7 +13,7 @@ namespace cgds.Bank.GrainInterfaces.Account
         Task Withdraw(Operation operation);
         Task Deposit(Operation operation);
         Task<decimal> GetBalance();
-        Task<List<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate);
+        Task<IEnumerable<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate);
 
     }
 }

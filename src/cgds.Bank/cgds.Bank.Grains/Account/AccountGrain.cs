@@ -46,12 +46,11 @@ namespace cgds.Bank.Grains.Account
             return Task.FromResult(_account.State.Balance);
         }
 
-        public Task<List<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate)
+        public Task<IEnumerable<OperationHistoryEntry>> GetHistory(DateTime startDate, DateTime endDate)
         {
             var filteredHistory = _account.State
                 .History
-                .Where(h => h.Date >= startDate && h.Date <= endDate)
-                .ToList();
+                .Where(h => h.Date >= startDate && h.Date <= endDate);
             return Task.FromResult(filteredHistory);
         }
 

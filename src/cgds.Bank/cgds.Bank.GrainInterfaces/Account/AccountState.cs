@@ -10,7 +10,7 @@ namespace cgds.Bank.GrainInterfaces.Account
     {
 
         public decimal Balance { get; set; }
-        public List<OperationHistoryEntry> History { get; set; } = new List<OperationHistoryEntry>();
+        public IList<OperationHistoryEntry> History { get; set; } = new List<OperationHistoryEntry>();
 
     }
 
