@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace cgds.Bank.Application.Queries.Account
 {
-    public class GetHistoryQuery : IRequest<List<OperationHistoryEntry>>
+    public class GetHistoryQuery : IRequest<IEnumerable<OperationHistoryEntry>>
     {
         public int AccountNumber { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
 
-    public class GetHistoryQueryHandler : IRequestHandler<GetHistoryQuery, List<OperationHistoryEntry>>
+    public class GetHistoryQueryHandler : IRequestHandler<GetHistoryQuery, IEnumerable<OperationHistoryEntry>>
     {
 
         private readonly IGrainFactory _grainFactory;
@@ -27,7 +27,7 @@ namespace cgds.Bank.Application.Queries.Account
             _grainFactory = grainFactory;
         }
 
-        public Task<List<OperationHistoryEntry>> Handle(GetHistoryQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<OperationHistoryEntry>> Handle(GetHistoryQuery request, CancellationToken cancellationToken)
         {
             var accountGrain = _grainFactory.GetGrain<IAccountGrain>(request.AccountNumber);
             return accountGrain.GetHistory(request.StartDate, request.EndDate);
